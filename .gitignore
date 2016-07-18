@@ -1,0 +1,15 @@
+.DS_Store
+.settings
+.project
+.classpath
+.idea/
+node_modules/
+logs/
+*.iml
+.idea
+target
+logs
+npm-debug.log
+.jshintrc
+.sublime-project
+.tern-project

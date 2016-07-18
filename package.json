@@ -1,0 +1,31 @@
+{
+  "name": "goingio.dshow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && echo 3",
+    "init-env": "bin/init-env.sh",
+    "publish": "bin/publish.sh",
+    "build": "bin/build.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "co-body": "^4.2.0",
+    "koa": "^1.2.0",
+    "koa-bodyparser": "^2.2.0",
+    "koa-gzip": "~0.1.0",
+    "koa-route": "^2.4.2",
+    "koa-session": "~3.3.1",
+    "koa-static-cache": "~3.1.7",
+    "log4js": "~0.6.38",
+    "optimist": "~0.6.1",
+    "superagent": "^2.1.0",
+    "thunkify": "^2.1.2",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "pm2": "~0.15.9"
+  }
+}
