@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="http://www.autonavi.com/favicon.ico">
+    <title>数据秀(#DSHOW_VERSION#)</title>
+    <style>
+        .ng-cloak {
+            display: none !important;
+        }
+
+        #user-opt [class*="fa-"] {
+            width: 12px;
+            heigth: 15px;
+        }
+    </style>
+    <!-- 全局变量定义 -->
+    <script type="text/javascript">
+        (function (window) {
+            DSHOW_CONTEXT = '#DSHOW_CONTEXT#';
+            DSHOW_VERSION = '#DSHOW_VERSION#';
+            DSHOW_THEME = '#DSHOW_THEME#';
+
+            window.loadJS = function (url, theme, version) {
+                document.write('<script src="' + DSHOW_CONTEXT + '/statics/js'
+                        + (theme == undefined ? '' : '/themes/' + theme) + url
+                        + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                        + '"><\/script>')
+            }
+            window.loadCSS = function (url, theme, version) {
+                document.write('<link rel="stylesheet" href="' + DSHOW_CONTEXT
+                        + '/statics/css'
+                        + (theme == undefined ? '' : '/themes/' + theme) + url
+                        + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                        + '"/>');
+            }
+            window.loadIMG = function (url, attr, theme, version) {
+                var style = '';
+                if (attr != undefined) {
+                    for (var index in attr) {
+                        style += index + '="' + attr[index] + '" ';
+                    }
+                }
+                document.write('<img src="' + DSHOW_CONTEXT + '/statics/images'
+                        + (theme == undefined ? '' : '/themes/' + theme) + url
+                        + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                        + '" ' + style + ' />');
+            }
+            window.loadLINK = function (url, text) {
+                document.write('<a href="' + DSHOW_CONTEXT + url + '">' + text
+                        + '<\/a>');
+            }
+
+            Date.prototype.format = function (y) {
+                var x = this;
+                var z = {
+                    M: x.getMonth() + 1,
+                    d: x.getDate(),
+                    h: x.getHours(),
+                    m: x.getMinutes(),
+                    s: x.getSeconds()
+                };
+                y = y.replace(/(M+|d+|h+|m+|s+)/g, function (v) {
+                    return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1)))
+                            .slice(-2)
+                });
+                return y.replace(/(y+)/g, function (v) {
+                    return x.getFullYear().toString().slice(-v.length)
+                });
+            };
+        })(window);
+
+        //	require.config({
+        //		waitSeconds: 200,
+        //		baseUrl: QMX_CONTEXT + '/themes/' + QMX_THEME,
+        //		urlArgs: 'v=' + QMX_VERSION,
+        //		paths: {
+        //			"leaflet": "leaflet"
+        //		}
+        //	});
+    </script>
+    <!-- 资源加载 -->
+    <script type="text/javascript">
+        loadCSS('/animate.css');
+        loadCSS('/bootstrap.css');
+        loadCSS('/bootstrap-tour.min.css');
+        loadCSS('/leaflet.css');
+        loadCSS('/toastr.css');
+        loadCSS('/' + DSHOW_THEME + '.css', DSHOW_THEME);
+
+        loadJS('/jquery.min.js');
+        loadJS('/themes/xenon/joinable.js')
+        loadJS('/require.min.js');
+        loadJS('/bootstrap.min.js');
+        loadJS('/bootstrap-tour.min.js');
+        loadJS('/dshow.js');
+    </script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        loadJS('/html5shiv.min.js');
+        loadJS('/respond.min.js');
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+<nav class="navbar horizontal-menu">
+    <!-- set fixed position by adding class "navbar-fixed-top" -->
+
+    <div class="navbar-inner">
+
+        <!-- Navbar Brand -->
+        <div class="navbar-brand">
+            <a href="/dshow-web/index" class="logo">
+                <script type="text/javascript">
+                    loadIMG('/logo-white-bg@2x.png', {
+                        'width': '80',
+                        'class': 'hidden-xs'
+                    }, DSHOW_THEME);
+                    loadIMG('/logo@2x.png', {
+                        'width': '80',
+                        'class': 'visible-xs'
+                    }, DSHOW_THEME);
+                </script>
+            </a>
+        </div>
+
+        <!-- Mobile Toggles Links -->
+        <div class="nav navbar-mobile">
+
+            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+            <div class="mobile-menu-toggle">
+                <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+                <a href="#" data-toggle="settings-pane" data-animate="true"> <i
+                        class="linecons-cog"></i>
+                </a> <a href="#" data-toggle="user-info-menu-horizontal"> <i
+                    class="fa-bell-o"></i> <span class="badge badge-success">7</span>
+            </a>
+
+                <!-- data-toggle="mobile-menu-horizontal" will show horizontal menu links only -->
+                <!-- data-toggle="mobile-menu" will show sidebar menu links only -->
+                <!-- data-toggle="mobile-menu-both" will show sidebar and horizontal menu links -->
+                <a href="#" data-toggle="mobile-menu-horizontal"> <i
+                        class="fa-bars"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="navbar-mobile-clear"></div>
+
+        <!-- main menu -->
+        <ul class="navbar-nav"></ul>
+
+        <!-- notifications and other links -->
+
+        <ul class="nav nav-userinfo navbar-right">
+            <li class="dropdown user-profile" id="logout"><a href="#"
+                                                             data-toggle="dropdown">
+                <script type="text/javascript">
+                    loadIMG('/user-1.png', {
+                        'alt': 'user-image',
+                        'class': 'img-circle img-inline userpic-32',
+                        'width': '28'
+                    }, DSHOW_THEME);
+                </script> <span><span id="user-profile">游客</span> <i
+                    class="fa-angle-down"></i></span>
+            </a>
+
+                <ul class="dropdown-menu user-profile-menu list-unstyled"
+                    id="user-opt">
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="main-content">
+    #FRAME_TEMPLATE#
+</div>
+<script type="text/javascript">
+    document.write(
+            "<footer>©" + new Date().getFullYear() + " 服务平台部-数据分析组 版权所有</footer>"
+    )
+    loadJS('/dshow/menu.js');
+    loadJS('/dshow/frame.js');
+    loadJS('/dshow/tour.js');
+</script>
+</body>
+
+</html>

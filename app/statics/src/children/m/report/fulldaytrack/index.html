@@ -1,0 +1,548 @@
+<base href="/">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        color: #999;
+        position: relative;
+    }
+
+    body > .main-content {
+        display: flex;
+    }
+
+    .leaflet-top {
+        z-index: 10;
+    }
+
+    #maincontainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex: 1;
+    }
+
+    .side-menu {
+        width: 500px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .map-content {
+        flex: 10;
+        position: relative;
+    }
+
+
+
+    .chart-panel * {
+        transition: all .8s;
+    }
+
+    #chart {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 860px;
+        transform: translateX(1000px);
+        z-index: 2;
+    }
+    .on #chart {
+        transform: translateX(0px);
+    }
+    #chart svg {
+        float: right;
+        background-color: rgba(250, 250, 250, 0.8);
+        box-shadow: 0 -1px 3px #d4d4d4;
+    }
+
+    .control-btn {
+        position: relative;
+        float: left;
+        width: 20px;
+        height: 150px;
+        background: url("/dshow-web/statics/images/panctrl.png") center center no-repeat;
+        background-position-x: 10%;
+        line-height: 150px;
+    }
+
+    .control-btn.back {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+    }
+
+    .on .control-btn.back {
+        transform: translateX(1000px);
+    }
+
+    .control-btn:hover {
+        transition: none;
+        cursor: pointer;
+        color: #559fff;
+        /*background-color: rgba(255, 255, 255, 0.69);*/
+    }
+
+    .control-btn i {
+        padding-left: 8px;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .area {
+        fill: steelblue;
+        opacity: 0.7;
+    }
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+    .focus circle {
+        fill: white;
+        stroke: steelblue;
+        stroke-width: 2;
+    }
+
+    .focus-path path {
+        fill: none;
+        stroke: red;
+        stroke-width: 5;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+    }
+
+    .date-picker-con {
+        overflow: hidden;
+    }
+    #datepicker {
+        padding: 10px 0 0 0;
+    }
+    .query {
+        box-shadow: 0px 4px 4px;
+        z-index: 3;
+        max-height: 173px;
+    }
+
+    .overview {
+        margin-top: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        background-color: rgba(156, 204, 235, 0.22);
+    }
+
+    .overview dl {
+        margin-bottom: 0;
+        color: #979898;
+    }
+
+    .overview dd {
+        font-size: 107%;
+    }
+
+    .overview .col-sm-6 dt {
+        width: 90px;
+    }
+
+    .overview .col-sm-6 dd {
+        margin-left: 100px;
+    }
+
+    .track-detail {
+        display: block;
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+    }
+
+    .active .track-detail {
+
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+        padding-left: 73px;
+    }
+
+    .tracks {
+        display: flex;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 321px;
+    }
+    .animate * {
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .animate {
+        width: 100%;
+    }
+
+    .tracks .media-list .no-activity {
+        padding: 20px 20px 10px 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .tracks .media-list .media {
+        padding: 22px 2px 5px 2px;
+        margin-top: 0;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+
+    .tracks .media-list .media:hover {
+        background-color: rgba(205, 188, 180, 0.2);
+    }
+
+    .tracks .media-list .media.place-tail {
+        margin-top: 40px;
+    }
+
+    .place-tail:before {
+        content: ' ';
+        display: inline-block;
+        position: absolute;
+        left: 63px;
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border: #0090f5 2px solid;
+        background-color: #0090f5;
+        border-radius: 50% 50%;
+        z-index: 2;
+    }
+    .place-tail.end:before {
+        border-color: #fa2548;
+        background-color: #fa2548;
+    }
+
+    .place-tail > .time-label {
+        font-weight: bold;
+    }
+
+    .tail-address {
+        margin-left: 20px;
+        font-size: 110%;
+        font-weight: bold;
+    }
+
+    .tracks .media-list .media.day-start {
+        padding-top: 15px;
+    }
+
+    .tracks .media-list .media .day-label {
+        display: none;
+    }
+
+    .tracks .media-list .media.day-start .day-label {
+        display: block;
+        position: absolute;
+        top: -10px;
+        background-color: #409f89;
+        color: white;
+        font-size: 110%;
+        width: 90px;
+        padding: 2px 4px;
+        border-left: 5px #ff9900 solid;
+        margin-left: -22px;
+        margin-bottom: 5px;
+        box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 5px;
+        z-index: 3;
+    }
+
+
+    .media-body {
+        padding: 2px 0px;
+        width: 100%;
+    }
+
+
+    li.list-group-item.active, li.list-group-item.active:hover {
+        color: #999;
+        background-color: #EDEEF0;
+    }
+
+
+    .time-line {
+        background: url("/dshow-web/statics/images/rect-bg.png") repeat-y;
+        background-position: 67px;
+        position: relative;
+    }
+
+
+    .time-label {
+        background-color: rgba(97, 97, 97, 0.9);
+        color: white;
+        font-size: 90%;
+        padding: 0 4px;
+        border-radius: 2px;
+    }
+    .tracks .media-list dt, .tracks .media-list dd {
+        display: inline;
+    }
+    .tracks .media-list dl {
+        margin: 0;
+    }
+    .tracks .media-list dl dt{
+        float: left;
+    }
+
+    .tracks .media-list dl dd{
+        display: block;
+        margin-left: 60px;
+    }
+
+    .places dd:first-of-type {
+        padding-bottom: 7px;
+    }
+
+    .tracks .media-list .places dt::after {
+        content: " ";
+        width: 15px;
+        height: 15px;
+        margin-left: 6px;
+        margin-top: 2px;
+        display: inline-block;
+        box-sizing: border-box;
+        border: #2b78e4 2px solid;
+        border-radius: 50% 50%;
+        background-color: white;
+        position: absolute;
+        z-index: 2;
+    }
+    .tracks .media-list .places dt:last-of-type::after {
+        border-color: #009a0d;
+    }
+
+    .item-line {
+        position: absolute;
+        height: 50%;
+        width: 66px;
+        top: 10px;
+        left: 0;
+        border-right: rgba(98, 98, 98, 0.4) 3px dotted;
+        z-index: 1;
+    }
+
+
+    .no-track-alert {
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .no-track-alert.ng-hide-add, .no-track-alert.ng-hide-remove {
+        transition: all linear 0.5s;
+    }
+
+    .no-track-alert.ng-hide {
+        line-height: 0;
+        opacity: 0;
+        padding: 0 10px;
+    }
+
+    /*锁定pannel模态框样式*/
+    .lock-main {
+        background: rgb(255, 255, 255);
+        opacity: 0.4;
+        width: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        z-index: 10000;
+        text-align: center;
+        min-height: 1200px;
+    }
+
+    .lock-main{
+        border-radius: 6px;
+    }
+
+    /* loading begin */
+    .spinner {
+        padding-top: 100px;
+    }
+
+    .spinner > div {
+        width: 20px;
+        height: 20px;
+        background-color: #3389d4;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+        animation: bouncedelay 1.4s infinite ease-in-out;
+        /* Prevent first frame from flickering when animation starts */
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .spinner .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+    }
+
+    .spinner .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+        0%, 80%, 100% {
+            -webkit-transform: scale(0.0)
+        }
+        40% {
+            -webkit-transform: scale(1.0)
+        }
+    }
+
+    @keyframes bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        }
+        40% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+        }
+    }
+    /* loading end */
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 500px;
+        z-index: 2;
+    }
+</style>
+<div id="maincontainer" ng-controller="appCtrl" class="ng-cloak">
+    <div class="side-menu">
+        <div class="panel-body query">
+
+            <div class="input-group col-sm-12">
+                <input type="text" class="form-control" placeholder="diu" ng-model="diu" value="">
+                  <span class="input-group-btn">
+                    <button class="btn btn-blue" type="button" ng-click="resetDiu()">Search</button>
+                  </span>
+            </div>
+
+            <div class="date-picker-con">
+                <div id="datepicker" class="col-sm-4"></div>
+                <div class="col-sm-8"><p class="text-left" style="padding: 10px 0 0 0; margin-left: -40px; line-height: 2; font-style: italic;">点击选择一天的轨迹</p></div>
+            </div>
+
+        </div>
+        <div class="tracks ">
+            <div class="animate">
+                <div class="row overview">
+                    <div class="col-sm-6">
+                        <dl class="dl-horizontal">
+                            <dt>首次活动时间</dt>
+                            <dd>{{ dayOverview.firsttime }}</dd>
+                            <dt>最后活动时间</dt>
+                            <dd>{{ dayOverview.lasttime }}</dd>
+                            <dt>定位总数</dt>
+                            <dd>{{ dayOverview.loccount }}</dd>
+
+                        </dl>
+                    </div>
+                    <div class="col-sm-6">
+                        <dl class="dl-horizontal">
+
+                            <dt>停留点总数</dt>
+                            <dd>{{ dayOverview.staycount }}</dd>
+                            <dt>停留总时长</dt>
+                            <dd>{{ dayOverview.areastays }}</dd>
+                            <dt>停留区域数</dt>
+                            <dd>{{ dayOverview.mbrs }}</dd>
+                        </dl>
+                    </div>
+
+                </div>
+                <ul class="list-group media-list time-line" ng-hide="showList">
+                    <li class="media place-tail">
+                        <span class="time-label">{{ startEndPoint.start.time }}</span>
+                        <span class="tail-address">{{ startEndPoint.start.address }}</span>
+                    </li>
+                    <li ng-repeat="naviInfo in naviInfoList" class="media {{ naviInfo.areaIndex == 0 ? 'day-start': '' }}">
+                        <div ng-click="loadAreaDetail(naviInfo.areaIndex, $index)">
+                            <div class="day-label">
+                                {{ naviInfo.dayWeek }}
+                            </div>
+                            <div class="media-body">
+                                <div class="row">
+                                    <dl class="places col-sm-12">
+                                        <dt class="time-label">{{ naviInfo.fromTo[0] }}</dt>
+                                        <dd>停留时长：{{ naviInfo.areaStays }}<br>
+                                        区域面积: {{ naviInfo.mbrarea }}</dd>
+                                        <dt class="time-label">{{ naviInfo.fromTo[1] }}</dt>
+                                        <dd>{{ naviInfo.address }}</dd>
+                                        <div class="item-line"></div>
+                                    </dl>
+
+                                </div>
+                            </div>
+                            <div class="media-body track-detail">
+                                <div class="row">
+                                    <dl>
+                                        <dt>停留时段</dt>
+                                        <dd ng-bind-html="naviInfo.timeslices"></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="media place-tail end">
+                        <span class="time-label">{{ startEndPoint.end.time }}</span>
+                        <span class="tail-address">{{ startEndPoint.end.address }}</span>
+                    </li>
+
+
+
+                </ul>
+                <ul class="list-group media-list" ng-show="showList">
+                    <li class="no-activity">
+                        <div>
+                            没有活动轨迹
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="lock-main" id="lock-main" style="height: 321px;"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
+        </div>
+
+    </div>
+    <div class="map-content" ng-keypress="displayInfo($event)">
+        <div id="map">
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>-->
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=a0ca0ef317a808948f4a732403d55404"></script>
+<script>
+    loadCSS('/datepicker/date-month.css');
+    loadCSS('/datepicker/date-range.css');
+    loadJS('/angular.min.js');
+    loadJS('/dshow/report/fulldaytrack/tracks.js');
+</script>

@@ -1,0 +1,52 @@
+.page-body {
+    display: flex;
+    flex-direction: column;
+    height: initial;
+    min-height: 100vh;
+}
+
+.left-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.info-panel {
+    min-height: initial !important;
+    min-width: 300px;
+}
+
+#ng-app {
+    flex: 1;
+    display: flex;
+}
+
+body > .main-content {
+    display: flex;
+}
+
+.map-container {
+    flex: 1;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.no-event {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
+
+.list-group-item-heading {
+    color: black;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

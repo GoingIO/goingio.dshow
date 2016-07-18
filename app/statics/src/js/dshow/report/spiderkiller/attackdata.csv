@@ -1,0 +1,128 @@
+ip,country,province,city,district,servname,d_datebuf
+190.234.106.15,秘鲁,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-15 13:53:05 
+106.46.247.92,中国,河南省,郑州市,NULL,/ws/transfer/aps/locate/ , 2015-06-15 12:22:47 
+222.243.110.174,中国,湖南省,邵阳市,NULL,/ws/transfer/aps/locate/ , 2015-06-15 12:22:47 
+221.238.24.111,中国,天津市,天津市,NULL,/ws/transfer/aps/locate/ , 2015-06-15 11:54:22 
+111.161.97.62,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-15 11:08:05 
+58.245.171.213,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-15 08:28:47 
+112.17.239.65,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-15 06:08:48 
+82.237.128.39,法国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-15 02:49:42 
+12.193.180.141,美国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-14 19:52:04 
+60.208.226.144,中国,山东省,济南市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-14 13:25:00 
+124.174.56.97,中国,广东省,广州市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-14 11:39:14 
+123.14.144.173,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-14 11:39:12 
+60.25.140.231,中国,天津市,天津市,河西区,/ws/mapapi/realtimebus/linestation/ , 2015-06-14 00:11:15 
+124.130.7.85,中国,山东省,临沂市,NULL,/ass?t=aps/,2015-06-13 21:52:29 
+117.86.154.131,中国,江苏省,南通市,NULL,/ass?t=aps/,2015-06-13 20:36:10 
+124.174.62.243,中国,广东省,广州市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-13 20:09:35 
+27.218.208.175,中国,山东省,临沂市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-13 15:53:00 
+121.35.209.16,中国,广东省,深圳市,宝安区,/ws/transfer/aps/locate/ , 2015-06-13 14:25:24 
+175.168.26.103,中国,辽宁省,沈阳市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-13 09:56:46 
+119.50.63.33,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-13 08:39:24 
+27.24.135.181,中国,湖北省,咸宁市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-12 17:52:46 
+121.224.138.66,中国,江苏省,苏州市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-12 14:53:31 
+116.52.88.159,中国,云南省,昆明市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-12 12:23:16 
+182.116.32.137,中国,河南省,鹤壁市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-12 12:08:28 
+207.96.136.2,加拿大,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-12 09:56:35 
+218.109.81.143,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-11 23:20:26 
+122.136.174.92,中国,吉林省,延边朝鲜族自治州,敦化市,/ws/valueadded/weather/info/ , 2015-06-11 19:21:39 
+119.72.199.228,日本,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-11 17:09:23 
+60.3.144.79,中国,河北省,唐山市,NULL,/ass?t=aps/,2015-06-11 16:53:46 
+111.30.26.69,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-11 14:39:32 
+222.163.8.149,中国,吉林省,延边朝鲜族自治州,NULL,/ws/valueadded/weather/info/ , 2015-06-11 13:29:32 
+175.165.36.173,中国,辽宁省,丹东市,NULL,/ass?t=search/,2015-06-11 06:19:58 
+112.171.225.157,韩国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-11 01:22:10 
+114.83.73.158,中国,上海市,上海市,青浦区,/ws/mapapi/geo/reversecode/ , 2015-06-11 01:07:15 
+221.232.118.109,中国,湖北省,武汉市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-10 22:27:19 
+106.141.151.15,日本,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-10 21:41:23 
+58.22.120.254,中国,福建省,福州市,NULL,/ass?t=aps/,2015-06-10 20:14:53 
+222.90.142.93,中国,陕西省,西安市,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-10 18:58:54 
+119.50.141.233,中国,吉林省,延边朝鲜族自治州,NULL,/ws/valueadded/weather/info/ , 2015-06-10 17:42:12 
+117.150.54.103,中国,湖北省,武汉市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-10 17:29:31 
+27.189.176.96,中国,河北省,廊坊市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-10 09:29:43 
+117.186.7.91,中国,北京市,北京市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-10 01:10:54 
+111.74.27.16,中国,江西省,南昌市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-09 23:12:22 
+222.169.39.75,中国,吉林省,延边朝鲜族自治州,敦化市,/ws/valueadded/weather/info/ , 2015-06-09 22:42:18 
+123.6.94.96,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-09 22:13:03 
+119.50.12.3,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-09 19:40:20 
+183.216.59.5,中国,江西省,南昌市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-09 18:26:13 
+211.87.224.250,中国,山东省,济南市,NULL,/ws/app/conf/app_update/ , 2015-06-09 13:58:39 
+222.78.43.111,中国,福建省,漳州市,NULL,/ass?t=aps/,2015-06-09 13:42:28 
+211.87.224.250,中国,山东省,济南市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-09 13:12:47 
+211.87.224.250,中国,山东省,济南市,NULL,/ws/mapapi/map/offline/district/ , 2015-06-09 12:01:26 
+60.24.92.100,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-09 08:44:52 
+42.122.84.0,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-09 02:11:12 
+111.0.79.44,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-08 21:13:30 
+121.7.154.102,新加坡,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-08 21:13:28 
+106.42.24.183,中国,河南省,鹤壁市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-08 20:13:08 
+61.135.169.78,中国,北京市,北京市,NULL,/ws/mapapi/navigation/auto/ , 2015-06-08 17:25:54 
+58.100.8.13,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-08 11:58:08 
+36.48.150.114,中国,吉林省,吉林市,NULL,/ws/valueadded/weather/info/ , 2015-06-08 08:31:42 
+36.22.31.155,中国,浙江省,宁波市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-08 00:54:21 
+221.198.149.19,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-07 19:25:23 
+221.197.16.149,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-07 18:27:37 
+106.227.11.52,中国,江西省,南昌市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-07 13:28:24 
+98.220.207.78,美国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-07 06:55:04 
+58.245.160.211,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-06 23:09:46 
+114.81.85.149,中国,上海市,上海市,NULL,/ws/transfer/aps/locate/ , 2015-06-06 19:55:54 
+111.201.122.208,中国,北京市,北京市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-06 19:55:53 
+101.91.159.231,中国,上海市,上海市,NULL,/ws/transfer/aps/locate/ , 2015-06-06 18:26:15 
+180.155.189.156,中国,上海市,上海市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-06 16:56:27 
+82.166.20.39,以色列,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-06 14:26:59 
+123.14.239.68,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-06 14:15:16 
+220.114.60.112,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-06 13:13:48 
+119.50.7.245,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-06 12:59:32 
+119.50.0.76,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-06 12:29:00 
+61.52.75.20,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-06 10:13:12 
+115.198.21.42,中国,浙江省,杭州市,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-06 05:23:01 
+110.17.37.36,中国,内蒙古自治区,包头市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-05 21:10:53 
+115.199.186.185,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-05 19:12:29 
+134.173.139.234,美国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-05 18:30:07 
+123.125.67.154,中国,北京市,北京市,NULL,/ws/mapapi/navigation/auto/ , 2015-06-05 16:57:47 
+123.125.67.153,中国,北京市,北京市,NULL,/ws/mapapi/navigation/auto/ , 2015-06-05 16:57:46 
+123.125.67.147,中国,北京市,北京市,NULL,/ws/mapapi/navigation/auto/ , 2015-06-05 16:57:46 
+123.125.67.148,中国,北京市,北京市,NULL,/ws/mapapi/navigation/auto/ , 2015-06-05 16:57:45 
+124.160.255.22,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-05 14:29:47 
+111.178.70.1,中国,湖北省,孝感市,NULL,/ass?t=search/,2015-06-05 13:47:45 
+59.52.55.141,中国,江西省,南昌市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-05 12:42:12 
+14.119.241.104,中国,广东省,湛江市,NULL,/ass?t=search/,2015-06-05 12:26:30 
+60.186.117.48,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-05 10:16:43 
+58.16.12.39,中国,贵州省,贵阳市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-05 00:27:36 
+49.73.19.148,中国,江苏省,苏州市,NULL,/ass?t=search/,2015-06-04 23:55:27 
+120.206.28.17,中国,江西省,南昌市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-04 23:39:32 
+42.236.204.128,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-04 19:57:43 
+59.61.120.109,中国,福建省,福州市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-04 16:43:14 
+222.161.140.71,中国,吉林省,延边朝鲜族自治州,珲春市,/ws/valueadded/weather/info/ , 2015-06-04 12:32:00 
+119.50.128.53,中国,吉林省,延边朝鲜族自治州,图们市,/ws/valueadded/weather/info/ , 2015-06-04 12:14:18 
+222.163.17.102,中国,吉林省,延边朝鲜族自治州,NULL,/ws/valueadded/weather/info/ , 2015-06-04 08:59:32 
+101.26.8.187,中国,河北省,邯郸市,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-04 07:14:29 
+123.158.167.161,中国,浙江省,台州市,温岭市,/ass?t=search/,2015-06-04 00:58:04 
+124.112.204.70,中国,安徽省,宣城市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-03 22:41:53 
+124.230.234.177,中国,湖南省,邵阳市,NULL,/ass?t=search/,2015-06-03 22:26:43 
+115.206.199.220,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-03 20:46:16 
+119.50.143.187,中国,吉林省,延边朝鲜族自治州,NULL,/ws/valueadded/weather/info/ , 2015-06-03 19:41:33 
+1.199.65.231,中国,河南省,新乡市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-03 19:28:53 
+183.93.4.117,中国,湖北省,恩施土家族苗族自治州,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-03 12:39:26 
+182.244.207.215,中国,云南省,临沧市,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-03 12:39:25 
+119.50.47.136,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-03 11:29:07 
+115.199.84.204,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-03 10:47:49 
+223.129.12.17,中国,四川省,成都市,NULL,/ws/mapapi/geo/reversecode/ , 2015-06-03 10:47:49 
+27.115.189.146,韩国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-03 08:02:54 
+213.230.73.89,乌兹别克斯坦,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-03 03:54:59 
+27.19.110.134,中国,湖北省,武汉市,NULL,/ass?t=search/,2015-06-03 01:21:55 
+111.31.242.148,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-02 23:10:15 
+125.33.84.19,中国,北京市,北京市,石景山区,/ass?t=search/,2015-06-02 22:58:33 
+39.184.226.117,中国,浙江省,NULL,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-02 22:58:33 
+111.10.243.49,中国,重庆市,重庆市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-02 21:40:49 
+119.50.206.127,中国,吉林省,延边朝鲜族自治州,珲春市,/ws/valueadded/weather/info/ , 2015-06-02 20:36:52 
+112.10.172.117,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-02 20:17:05 
+115.60.51.87,中国,河南省,郑州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-02 18:56:40 
+36.104.4.18,中国,浙江省,杭州市,NULL,/ws/valueadded/weather/info/ , 2015-06-02 16:27:41 
+222.161.128.42,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-02 14:28:32 
+106.6.110.247,中国,江西省,南昌市,NULL,/ws/transfer/auth/clusterservice/messagehandle/ , 2015-06-01 23:13:34 
+14.148.19.107,中国,广东省,汕头市,NULL,/ws/transfer/aps/locate/ , 2015-06-01 22:42:28 
+180.59.167.125,日本,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-01 19:58:09 
+122.225.171.107,中国,浙江省,杭州市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-01 19:13:41 
+86.184.202.243,英国,NULL,NULL,NULL,/ws/nearby_v3/nearby_category/ , 2015-06-01 18:14:09 
+117.14.29.131,中国,天津市,天津市,NULL,/ws/mapapi/realtimebus/linestation/ , 2015-06-01 15:00:42 
+58.245.172.201,中国,吉林省,延边朝鲜族自治州,延吉市,/ws/valueadded/weather/info/ , 2015-06-01 15:00:39 

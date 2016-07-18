@@ -1,0 +1,43 @@
+html, body {
+    font-family:  "华文细黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.animate {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/** **/
+.side {
+    min-width: 400px;
+    border-right: 1px solid #ddd;
+    flex: 1;
+    background-color: #fefefe;
+}
+
+
+.to-top {
+    position: fixed;
+    z-index: 30;
+    right: 20px;
+    bottom: 60px;
+    font-size: 30px;
+    background-color: rgba(124, 126, 123, 0.55);
+    padding: 0px 11px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.to-top:hover {
+    background-color: rgba(124, 126, 123, 0.3);
+    border-radius: 2px;
+}

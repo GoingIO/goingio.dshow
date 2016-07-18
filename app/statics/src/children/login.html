@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Xenon Boostrap Admin Panel"/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="http://www.autonavi.com/favicon.ico">
+    <title>数据秀登录</title>
+
+    <script>
+        DSHOW_CONTEXT = '#DSHOW_CONTEXT#'
+        DSHOW_VERSION = '#DSHOW_VERSION#'
+        DSHOW_THEME = '#DSHOW_THEME#'
+        DSHOW_INDEX = '#DSHOW_INDEX#'
+        window.loadJS = function (url, theme, version) {
+            document.write('<script src="' + DSHOW_CONTEXT + '/statics/js'
+                    + (theme == undefined ? '' : '/themes/' + theme) + url
+                    + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                    + '"><\/script>')
+        }
+        window.loadCSS = function (url, theme, version) {
+            document.write('<link rel="stylesheet" href="' + DSHOW_CONTEXT
+                    + '/statics/css'
+                    + (theme == undefined ? '' : '/themes/' + theme) + url
+                    + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                    + '"/>');
+        }
+        window.loadIMG = function (url, attr, theme, version) {
+            var style = '';
+            if (attr != undefined) {
+                for (var index in attr) {
+                    style += index + '="' + attr[index] + '" ';
+                }
+            }
+            document.write('<img src="' + DSHOW_CONTEXT + '/statics/images'
+                    + (theme == undefined ? '' : '/themes/' + theme) + url
+                    + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                    + '" ' + style + ' />');
+        }
+    </script>
+    <script>
+        loadCSS("/bootstrap.css")
+        loadCSS("/animate.css")
+        loadCSS("/xenon-core.css", DSHOW_THEME)
+        loadCSS("/xenon-components.css", DSHOW_THEME)
+        loadCSS("/xenon-custom.css", DSHOW_THEME)
+        loadJS("/jquery.min.js")
+        loadJS("/jquery.validate.min.js")
+    </script>
+    <style>
+        .ng-cloak {
+            display: none;
+        }
+
+        .dshow-logo {
+            width: 100px;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animate-duration: 1s;
+        }
+
+        .login {
+            opacity: .85;
+        }
+
+        .login, .login:hover, .login:focus {
+            background-color: rgb(58, 141, 213);
+            border-color: rgb(58, 141, 213);
+            /*text-align: center;*/
+        }
+
+        .login:hover, .login:focus {
+            box-shadow: 5px 5px 10px;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body id="ng-app" class="ng-cloak page-body login-page login-light" ng-controller="appCtrl" style="overflow: hidden">
+
+
+<div class="login-container">
+
+    <div class="row" style="display: flex;justify-content: center;">
+
+        <div class="" style="align-items: center;width: 480px;">
+
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    // Reveal Login form
+                    setTimeout(function () {
+                        $(".fade-in-effect").addClass('in');
+                    }, 1);
+
+
+                    // Validation and Ajax action
+                    $("form#login").validate({
+                        rules: {
+                            username: {
+                                required: true
+                            },
+
+                            passwd: {
+                                required: true
+                            }
+                        },
+
+                        messages: {
+                            username: {
+                                required: '请输入用户名'
+                            },
+
+                            passwd: {
+                                required: '请输入密码'
+                            }
+                        }
+                    });
+
+                    // Set Form focus
+                    $("form#login .form-group:has(.form-control):first .form-control").focus();
+                });
+            </script>
+
+            <!-- Errors container -->
+            <div class="errors-container">
+
+
+            </div>
+
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form name="loginFormValidation" novalidate method="post" role="form" id="login"
+                  class="login-form fade-in-effect" ng-submit="login(loginFormValidation.$valid)">
+
+                <div class="login-header">
+                    <a ng-href="{{indexUrl}}" class="logo">
+                        <script>
+                            loadIMG('/logo-white-bg@2x.png', {
+                                'width': '80',
+                                'class': 'hidden-xs animated bounceInDown dshow-logo'
+                            }, DSHOW_THEME);
+                        </script>
+                    </a>
+
+                    <p style="color:red;">{{errorHint}}</p>
+                </div>
+
+
+                <div class="form-group bounceInLeft animated">
+                    <label class="control-label" for="username"></label>
+                    <input type="text" class="form-control" required placeholder="用户名、手机号或邮箱"
+                           ng-model="loginForm.userId"
+                           name="username" id="username"
+                           autocomplete="off"/>
+                </div>
+
+                <div class="form-group bounceInRight animated">
+                    <label class="control-label" for="passwd"></label>
+                    <input type="password" class="form-control" required placeholder="密码" ng-model="loginForm.password"
+                           name="passwd" id="passwd"
+                           autocomplete="off"/>
+                </div>
+
+                <div class="form-group bounceInUp animated">
+                    <button type="submit" class="btn btn-primary  btn-block text-center login">
+                        登录
+                    </button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    loadJS('/require.min.js')
+    loadJS('/dshow.js')
+    loadJS('/angular.min.js')
+    loadJS('/dshow/login.js')
+</script>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $(".dshow-logo").addClass("flip")
+        }, 1500)
+    })
+</script>
+</body>
+</html>

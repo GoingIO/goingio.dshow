@@ -1,0 +1,223 @@
+<style>
+    .main-content {
+        display: flex;
+    }
+
+    .panel-body {
+    }
+
+    .settings-panel {
+        flex: 1;
+    }
+
+    .settings-panel .panel-body {
+        margin-top: 20px;
+    }
+
+    .phone-form .form-group > label, .gd-account-form .form-group > label {
+        max-width: 100px;
+    }
+
+    .phone-form .form-group > div, .gd-account-form .form-group > div {
+        /*max-width: 280px;*/
+    }
+
+    button[disabled] {
+        color: white;
+    }
+
+    .separator {
+        height: 0px;
+        background: #eeeeee;
+        margin-bottom: 25px;
+    }
+
+    .nav-tabs li a {
+        border: none !important;
+    }
+
+    .vertical-center {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .horizontal-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bind-container .row {
+        width: 500px;
+        /*border: 1px solid #ccc;*/
+    }
+
+    .nav.nav-tabs > li > a {
+        background-color: initial;
+    }
+
+    .line {
+        height: 1px;
+        background: #eeeeee;
+    }
+
+    /*li {*/
+        /*border-bottom: 1px solid #eeeeee;*/
+    /*}*/
+
+    li.active {
+        border-bottom: 2px solid #53aaec;
+    }
+
+    .nav-tabs a {
+        font-size: 16px;
+    }
+
+    .btn-bind {
+        margin-bottom: 0;
+    }
+
+    .tab-content {
+        padding-top: 50px !important;
+        margin-bottom: 0 !important;
+    }
+</style>
+<div class="panel panel-default settings-panel ng-cloak" id="ng-app" ng-controller="appCtrl">
+    <div class="panel-heading">
+        <h3 class="panel-title">设置</h3>
+    </div>
+    <div class="panel-body">
+        <div class="bind-container horizontal-center">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <ul class="nav nav-tabs nav-tabs-justified">
+                        <li class="active">
+                            <a href="#gd-account-bind" data-toggle="tab">
+                                <span class="visible-xs"><i class="fa-home"></i></span>
+                                <span class="hidden-xs">高德账号绑定</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#phone-bind" data-toggle="tab">
+                                <span class="visible-xs"><i class="fa-user"></i></span>
+                                <span class="hidden-xs">手机绑定</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active horizontal-center" id="gd-account-bind">
+
+                            <form role="form" class="gd-account-form form-horizontal" name="gdAccountFormValidation"
+                                  novalidate
+                                  ng-submit="bindGDAccount(gdAccountFormValidation.$valid)"
+                                  ng-controller="gdAccountFormCtrl">
+                                <div class="form-group"
+                                     ng-class="{'validate-has-error':tryBindGDAccount&&gdAccountFormValidation.userName.$invalid}">
+                                    <label class="col-sm-2 control-label" for="user-name">用户名</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="user-name" name="userName"
+                                               ng-model="gdAccountForm.userName"
+                                               required="required"
+                                               placeholder="高德账号用户名">
+                                        <span class="validate-has-error"
+                                              ng-show="tryBindGDAccount&&gdAccountFormValidation.userName.$error.required">请填写用户名</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <div class="form-group"
+                                     ng-class="{'validate-has-error':tryBindGDAccount&&gdAccountFormValidation.password.$invalid}">
+                                    <label class="col-sm-2 control-label" for="password">密码</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="password"
+                                               required="required"
+                                               ng-model="gdAccountForm.password" id="password" placeholder="请输入密码">
+                                        <span class="validate-has-error"
+                                              ng-show="tryBindGDAccount&&gdAccountFormValidation.password.$error.required">请输入密码</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="separator"></div>
+                                <div class="horizontal-center">
+                                    <button class="btn btn-success">提交</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane horizontal-center" id="phone-bind">
+
+                            <form role="form" class="phone-form form-horizontal" name="phoneFormValidation" novalidate
+                                  ng-submit="bindPhone(phoneFormValidation.$valid)" ng-controller="phoneFormCtrl">
+                                <div class="form-group"
+                                     ng-class="{'validate-has-error':(tryGetVerifyCode||tryBindPhone)&&phoneFormValidation.phone.$invalid}">
+                                    <label class="col-sm-2 control-label" for="phone">手机号</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="phone" name="phone"
+                                               ng-model="phoneForm.phone"
+                                               required="required"
+                                               ng-pattern="/^1[3|4|5|8][0-9]\d{8}$/"
+                                               placeholder="请输入您的手机号"/>
+                                        <span class="validate-has-error"
+                                              ng-show="(tryGetVerifyCode||tryBindPhone)&&phoneFormValidation.phone.$error.required">请填写手机号</span>
+                                        <span class="validate-has-error"
+                                              ng-show="(tryGetVerifyCode||tryBindPhone)&&phoneFormValidation.phone.$error.pattern">请填写正确的手机号</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <div class="form-group"
+                                     ng-class="{'validate-has-error':tryBindPhone&&phoneFormValidation.verifyCode.$invalid}">
+                                    <label class="col-sm-2 control-label" for="verify-code">验证码</label>
+
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="verifyCode"
+                                               required="required"
+                                               ng-model="phoneForm.verifyCode" id="verify-code"
+                                               placeholder="请输入接收到的验证码">
+                                                <span class="validate-has-error"
+                                                      ng-show="tryBindPhone&&phoneFormValidation.verifyCode.$error.required">请填写验证码</span>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <button type="button" ng-disabled="sent" class="btn btn-info btn-bind"
+                                                ng-class="{'btn-info':!sent}" style="opacity:1;"
+                                                ng-click="getVerifyCode(phoneFormValidation.phone.$valid)">
+                                            <span ng-show="!sent">获取</span>
+                                            <span ng-show="sent">已发送({{remainingTime}}秒)</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+                                <div class="horizontal-center">
+                                    <button class="btn btn-success">提交</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    loadJS('/angular.min.js')
+    loadJS('/dshow/settings.js')
+</script>

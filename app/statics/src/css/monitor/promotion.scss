@@ -1,0 +1,258 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+html,body {
+  height: 100%;
+  font-family: "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", "Helvetica", sans-serif;
+  overflow: hidden;
+}
+
+@mixin browser-spec($prop, $pre) {
+  #{$prop}: -webkit-#{$pre};
+  #{$prop}: -moz-#{$pre};
+  #{$prop}: -ms-#{$pre};
+  #{$prop}: #{$pre};
+}
+
+$bgColor1: #03192B;
+$bgColor2: #040000;
+
+.main-content {
+  background: linear-gradient(to bottom, #03192B, #040000);
+  color: white;
+  min-height: 100%;
+  @include browser-spec(display, flex);
+  flex-direction: row;
+  //justify-content: flex-start;
+  //align-items: stretch;
+  //align-content: stretch;
+
+  .p-index {
+    flex: 2 1 auto;
+  }
+
+  .p-list {
+    flex: 1 1 auto;
+  }
+
+  .panel {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 652px;
+    height: 100px;
+    background: url("../../images/monitor-logo.png") no-repeat;
+    background-position: bottom left;
+  }
+}
+
+.p-index {
+  @include browser-spec(display, flex);
+  flex-direction: column;
+  margin-top: 40px;
+
+  .p-numbers {
+    flex: 1 1 auto;
+    @include browser-spec(display, flex);
+    flex-direction: row;
+    justify-content: space-around;
+    @include browser-spec(background, radial-gradient(ellipse,  #009dff 0%, rgba(255, 255, 255, 0) 80%));
+    background-repeat: no-repeat;
+    background-position: 50% 185px;
+    background-size:100% 1px;
+    max-height: 250px;
+  }
+
+  .p-chart {
+    flex: 3 1 auto;
+    .title {
+      margin-left: 60px;
+    }
+
+    #p-chart {
+      width: 560px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+      top: 20px;
+    }
+  }
+}
+
+.p-list {
+  margin-top: 40px;
+  ul {
+    list-style: none;
+  }
+  .p-luckydogs {
+    position: relative;
+    margin-top: 10px;
+    padding-left: 30px;
+    font-size: 18px;
+    color: #c3e8f3;
+    ul.dogs {
+
+      li {
+        margin: 14px 5px;
+        max-width: 250px;
+        height: 25px;
+        box-sizing: border-box;
+      }
+
+      .bingo {
+
+        &:before {
+          content: '';
+          width: 36.8px;
+          height: 23px;
+          display: inline-block;
+          background: url("../../images/smart-car-icon.png");
+          background-size: contain;
+          position: relative;
+          top: 5px;
+          margin-right: 5px;
+        }
+      }
+
+      .nobingo {
+        background: url("../../images/smart-car-bar.png");
+        background-repeat: no-repeat;
+      }
+
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      display: inline-block;
+      width: 80%;
+      height: 60px;
+      background-image: linear-gradient(to top, transparent, $bgColor1);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      display: inline-block;
+      width: 80%;
+      height: 60px;
+      background-image: linear-gradient(to bottom, transparent, #040a10);
+    }
+  }
+}
+
+.number-count {
+  .number {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 30px 10px;
+    margin-left: 25px;
+  }
+}
+
+.title {
+  font-size: 25px;
+  margin-left: 5px;
+  b {
+    font-weight: bold;
+  }
+  &:before {
+    content: " ";
+    display: inline-block;
+    box-sizing: content-box;
+    width: 14px;
+    height: 14px;
+    background-color: #0099fa;
+    border-radius: 15px;
+    border: double 6px #030E19;
+    margin-right: 5px;
+    position: relative;
+    bottom: -3px;
+  }
+}
+
+.number {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+
+
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  pointer-events: none;
+  .spirit {
+    position: relative;
+    display: none;
+    vertical-align: middle;
+    width: 414px;
+    height: 244px;
+    background: url("../../images/smart-gas-car.png") no-repeat center;
+    transform: scale(0, 0);
+  }
+  img {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+  }
+}
+
+@keyframes carOver {
+  0% {
+    background-position: 50% 50%;
+    transform: scale(3, 3) rotateZ(180deg);
+  }
+  50% {
+    //transform: scale(.5, .5);
+  }
+  100% {
+    background-position: 50% 50%;
+    transform: scale(0, 0) rotateZ(-360deg);
+  }
+}
+
+
+p.shine
+{
+  font-size: 3em;
+  margin: 0 auto;
+  width: 700px;
+}
+
+.shine
+{
+  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  -webkit-background-size: 125px;
+
+  color: rgba(255, 255, 255, 0.1);
+  -webkit-background-clip: text;
+
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes shine
+{
+  0%
+  {
+    background-position: top left;
+  }
+  100%
+  {
+    background-position: top right;
+  }
+}
+
+footer {
+  display: none;
+}

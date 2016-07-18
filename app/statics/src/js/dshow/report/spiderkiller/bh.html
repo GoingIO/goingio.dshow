@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>black hole</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            color: #999;
+            position: relative;
+        }
+
+        a {
+            color: #6F9AC4;
+        }
+
+        body {
+            background: #1D1F20;
+        }
+
+
+        #canvas {
+            width:100%;
+            height : 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+    </style>
+    <script src="/dshow-web/statics/js/d3.v3.js"></script>
+    <script src="/dshow-web/statics/js/blackhole.js"></script>
+</head>
+<body>
+<div id="canvas"></div>
+<script>
+
+    var text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eveniet fugit nemo, placeat quod repellendus vero. Autem cumque placeat sapiente?".split(' ')
+            , rawData = []
+            , l = 1000
+            , pl = 5
+            , p, c
+            , parents = []
+            , ONE_STEP = 108e5
+            , now = Date.now() - l*8*ONE_STEP
+            ;
+
+    function rand(max, min) {
+        min = min || 0;
+        return Math.random() * (max - min) + min;
+    }
+
+    while(pl--) {
+        parents.push({ name: text[Math.random() * (text.length - 1) | 0], key: pl});
+    }
+
+    c = text[Math.random() * (text.length - 1) | 0];
+    while(l--) {
+        p = parents[rand(parents.length-1) | 0];
+        c = !(l % 20) ? text[Math.random() * (text.length - 1) | 0] : c;
+        rawData.push({
+            key : l % (rand(50, 5) | 0),
+            category : c,
+            parent : p,
+            date : new Date(now += ONE_STEP * rand(8, 2))
+        })
+    }
+
+    console.log('var rawData = ' + JSON.stringify(rawData.sort(function (a, b) {
+        return a.date - b.date;
+    }), null, 2));
+
+
+    var data = rawData.map(function(d) {
+                d.date = new Date(d.date);
+                return d;
+            })
+            , stepDate = 864e5
+            , d3bh = d3.blackHole("#canvas")
+            ;
+
+    d3bh.setting.drawTrack = true;
+
+    d3bh.on('calcRightBound', function(l) {
+        return +l + stepDate;
+    })
+            .start(data)
+    ;
+</script>
+</body>
+</html>

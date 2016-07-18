@@ -1,0 +1,337 @@
+<style>
+    /*@import url("http://fonts.googleapis.com/css?family=Syncopate");*/
+    @font-face {
+        font-family: Syncopate;
+        src: url("statics/css/fonts/Syncopate-Regular.ttf");
+    }
+    video {
+        width: 100%;
+    }
+    .page-container {
+        color: #979898;
+    }
+
+
+    h1,h3 {
+        font-family: 'Syncopate', Helvetica, Arial;
+    }
+
+    div.exp p {
+        font-size: 14px;
+    }
+    .large-header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        /*background: #bdc6dc;*/
+        overflow: hidden;
+        background-size: cover;
+        background-position: center center;
+        z-index: -1;
+    }
+
+    .xe-widget {
+        border: 4px solid white;
+        border-radius: 4px;
+        transition-duration: .4s;
+    }
+
+    .xe-widget:hover {
+        box-shadow: 5px 10px 10px 5px;
+    }
+
+    /* hero */
+    .hero {
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Syncopate', Helvetica, Arial;
+        text-transform: uppercase;
+        margin-top: 2em;
+        height: 300px;
+        width: 100%;
+        display: table;
+    }
+
+    .hero {
+        overflow: hidden;
+        background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.44) 100%); /* FF3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.44))); /* Chrome,Safari4+ */
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.44) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.44) 100%); /* Opera 12+ */
+        background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.44) 100%); /* IE10+ */
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.12) 0%,rgba(0,0,0,0.44) 100%); /* W3C */
+    }
+    .hero p {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 2em;
+        line-height: 2em;
+    }
+    .hero i {
+        display: inline-block;
+        font-style: normal;
+        padding: 0 0.25em;
+        -webkit-transform: scale(0) translate3d(0, -2000px, 0);
+        -moz-transform: scale(0) translate3d(0, -2000px, 0);
+        -ms-transform: scale(0) translate3d(0, -2000px, 0);
+        -o-transform: scale(0) translate3d(0, -2000px, 0);
+        transform: scale(0) translate3d(0, -2000px, 0);
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+    }
+    i.fly-in-out {
+        -webkit-animation: fly-in-out 3s infinite ease-in-out;
+        -moz-animation: fly-in-out 3s infinite ease-in-out;
+        -o-animation: fly-in-out 3s infinite ease-in-out;
+        animation: fly-in-out 3s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes fly-in-out {
+        0% {
+            -webkit-transform: scale(0) translate3d(0, -1000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        15%, 85% {
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            -webkit-transform: scale(1) translate3d(0, 0, 0);
+            background: transparent;
+            box-shadow: none;
+        }
+        100% {
+            color: transparent;
+            -webkit-transform: scale(0) translate3d(0, 1000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+    }
+    @-moz-keyframes fly-in-out {
+        0% {
+            -moz-transform: scale(0) translate3d(0, -2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        15%, 85% {
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            -moz-transform: scale(1) translate3d(0, 0, 0);
+            background: transparent;
+            box-shadow: none;
+        }
+        100% {
+            color: transparent;
+            -moz-transform: scale(0) translate3d(0, 2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+    }
+    @-o-keyframes fly-in-out {
+        0% {
+            -o-transform: scale(0) translate3d(0, -2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        15%, 85% {
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            -o-transform: scale(1) translate3d(0, 0, 0);
+            background: transparent;
+            box-shadow: none;
+        }
+        100% {
+            color: transparent;
+            -o-transform: scale(0) translate3d(0, 2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+    }
+    @keyframes fly-in-out {
+        0% {
+            transform: scale(0) translate3d(0, -2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        15%, 85% {
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transform: scale(1) translate3d(0, 0, 0);
+            background: transparent;
+            box-shadow: none;
+        }
+        100% {
+            color: transparent;
+            transform: scale(0) translate3d(0, 2000px, 0);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px 100px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+    }
+
+    .xe-details h3 a {
+        opacity: 1 !important;
+    }
+</style>
+<div id="large-header" class="large-header">
+    <canvas id="demo-canvas"></canvas>
+</div>
+<div class="page-container container">
+
+    <div class="hero">
+        <!--<img src="http://placekitten.com/1150/550">-->
+        <p>DataShow, visual Data</p>
+    </div>
+    <div class="exp">
+        <h1>DataShow</h1>
+
+        <p>多维度展现独立用户、聚合用户属性信息。研究用户行为挖掘用户的家和公司、常去区域。</p>
+        <p>也许不知道一个人将要去哪里，但我们知道所有人喜欢去的地方。</p>
+        <p>用户永远是我们关心的最大主体，一天的奔波，回家休息片刻间，也许你想回顾一下今天的你是如何一步步走过那些地方的。</p>
+        <p>数据无价，我们在数据保护上做了很多工作，也许是时候曝光那些企图窃取我们宝贵数据的小偷们了。</p>
+
+        <br/>
+    </div>
+
+<h3 id="layout-toggles">
+    Gallery
+</h3>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="xe-widget xe-single-news">
+                <div class="xe-image">
+                    <a href="/dshow-web/web/m/amap/user/homecompany">
+                        <img src="statics/images/themes/index/hac.png" class="img-responsive">
+                        <span class="xe-gradient"></span>
+                    </a>
+                </div>
+
+                <div class="xe-details">
+                    <h3>
+                        <a href="/dshow-web/web/m/amap/user/homecompany">家和公司</a>
+                    </h3>
+
+                    <div class="category">
+                        <a href="/dshow-web/web/m/amap/user/homecompany">展示挖家和公司的挖掘成果</a>
+                    </div>
+
+                    <time></time>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+            <div class="xe-widget xe-single-news">
+                <div class="xe-image">
+                    <a href="/dshow-web/web/m/amap/user/permanentsite">
+                        <img src="statics/images/themes/index/parea.png" class="img-responsive">
+                        <span class="xe-gradient"></span>
+                    </a>
+                </div>
+
+                <div class="xe-details">
+                    <h3>
+                        <a href="/dshow-web/web/m/amap/user/permanentsite">活跃区域</a>
+                    </h3>
+
+                    <div class="category">
+                        <a href="/dshow-web/web/m/amap/user/permanentsite">展示用户活跃区域</a>
+                    </div>
+
+                    <time></time>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="xe-widget xe-single-news">
+                <div class="xe-image">
+                    <a href="/dshow-web/web/m/report/spiderkiller/index">
+                        <video src="statics/images/themes/index/attack.mp4" poster="statics/images/themes/index/attack_1.jpg" loop></video>
+                        <span class="xe-gradient"></span>
+                    </a>
+                </div>
+
+                <div class="xe-details">
+                    <h3>
+                        <a href="/dshow-web/web/m/report/spiderkiller/index">反爬虫</a>
+                    </h3>
+
+                    <div class="category">
+                        <a href="/dshow-web/web/m/report/spiderkiller/index">展示爬虫攻击服务接口行为的可视化</a>
+                    </div>
+
+                    <time></time>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+
+            <div class="xe-widget xe-single-news">
+                <div class="xe-image track-show">
+                    <a href="/dshow-web/web/m/report/track/index">
+                        <video src="statics/images/themes/index/track3.mp4" poster="statics/images/themes/index/track2_.jpg" loop></video>
+                        <span class="xe-gradient"></span>
+                    </a>
+                </div>
+
+                <div class="xe-details">
+                    <h3>
+                        <a href="/dshow-web/web/m/report/track/index">轨迹</a>
+                    </h3>
+
+                    <div class="category">
+                        <a href="/dshow-web/web/m/report/track/index">展现用户一天的行动轨迹(Demo)</a>
+                    </div>
+
+                    <time></time>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="xe-widget xe-single-news">
+                <div class="xe-image">
+                    <a href="/dshow-web/web/m/report/51/migration">
+                        <video src="statics/images/themes/index/migration.mp4" poster="statics/images/themes/index/migration2_.jpg" loop type="video/mp4"></video>
+                        <span class="xe-gradient"></span>
+                    </a>
+                </div>
+
+                <div class="xe-details">
+                    <h3>
+                        <a href="/dshow-web/web/m/report/51/migration">人口迁徙</a>
+                    </h3>
+
+                    <div class="category">
+                        <a href="/dshow-web/web/m/report/51/migration">假期全国人口迁徙图</a>
+                    </div>
+
+                    <time></time>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    loadJS('/dshow/index.js');
+//    loadJS('/lib/EasePack.js');
+</script>

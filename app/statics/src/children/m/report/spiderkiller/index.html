@@ -1,0 +1,268 @@
+<style>
+    /* latin-ext */
+    @font-face {
+        font-family: 'Unica One';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Unica One'), local('UnicaOne-Regular'), url(http://fonts.gstatic.com/s/unicaone/v4/Zxq4PdUSc3GE41eti2ZndIX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-family: 'Unica One';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Unica One'), local('UnicaOne-Regular'), url(http://fonts.gstatic.com/s/unicaone/v4/z3VYemEbD7zsQFQLG6g3SpBw1xU1rKptJj_0jans920.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        color: #C2C8D1;
+        position: relative;
+    }
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .maincontainer {
+        position: relative;
+    }
+    .maincanvas {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    #map {
+        height: 100%;
+    }
+
+    .liveAttacks {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+
+    }
+
+    .liveAttacks th {
+        text-align: center !important;
+    }
+
+    .liveAttacks td {
+        padding: 2px 5px;
+    }
+
+    @keyframes hidenavi {
+        from {
+            top: 0px
+        }
+
+        to {
+            top: -85px;
+            display: none;
+        }
+    }
+    @-webkit-keyframes hidenavi {
+        from {
+            top: 0px
+        }
+
+        to {
+            top: -85px;
+            display: none;
+        }
+    }
+    @-moz-keyframes hidenavi {
+        from {
+            top: 0px
+        }
+
+        to {
+            top: -85px;
+            display: none;
+        }
+    }
+
+    .easeHide  {
+        -webkit-animation-name: hidenavi;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-delay: 2s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-fill-mode: forwards;
+    }
+
+    .number {
+        font-family: "Unica One","Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .count {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .count span {
+        font-size: 2em;
+    }
+    .area-rank {
+        position: absolute;
+        left: 10px;
+    }
+    .area-rank .tr, .service-rank .tr {
+        position: fixed;
+        border-top: rgb(73, 73, 73) 1px solid;
+        min-width: 250px;
+    }
+    .tr span.item {
+
+    }
+    .tr span.pv {
+        display: block;
+        float: left;
+        min-width: 60px;
+    }
+
+    .service-rank {
+        position: absolute;
+        right: 10px;
+        min-width: 350px;
+    }
+    .service-rank .tr {
+        position: fixed;
+    }
+
+    .th {
+        position: fixed;
+        top: 85px;
+    }
+    .th span {
+        font-size: 16px;
+    }
+
+    div.timeslider {
+        position: absolute;
+        display: inline-block;
+        height: 40px;
+        width: auto !important;
+        margin-bottom: 30px;
+        padding: 0;
+        bottom: 0;
+        right: 20px;
+        -webkit-box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        -moz-box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        background: white;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+        border: 1px solid #999999;
+        text-align: left;
+        /*z-index: 105*/
+    }
+
+    div.timeslider ul {
+        display: block;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        line-height: 40px;
+        list-style: none;
+        cursor: default
+    }
+
+    div.timeslider ul li {
+        display: inline-block;
+        zoom:1;*display: inline;
+        vertical-align: top;
+        height: 40px;
+        _height: 40px;
+        width: auto;
+        line-height: 40px;
+    }
+
+
+
+    div.timeslider ul li.tracks span{
+        padding-left: 4px;
+    }
+
+    div.timeslider i.fa {
+        display: block;
+        width: 48px;
+        height: 40px;
+        text-align: center;
+        line-height: inherit;
+        cursor: pointer;
+    }
+
+    .mask {
+        position: absolute;
+        top: 85px;
+        z-index: 5;
+    }
+
+    body > footer {
+        z-index: 4;
+        background-color: transparent;
+        padding: 0;
+    }
+</style>
+
+<div id="maincontainer" class="maincontainer">
+
+    <div class="maincontent">
+        <div id="map"></div>
+    </div>
+    <div class="maincanvas">
+        <canvas id="world"></canvas>
+    </div>
+
+    <div class="charts">
+        <div class="count">
+            <span class="block number">0</span> <span class="number">/</span> <span class="attack number">0</span> (Block/Attack)
+        </div>
+        <div class="area-rank">
+            <div class="th">
+                <span>地区</span><span>城市</span><span>攻击次数</span>
+            </div>
+        </div>
+        <div class="service-rank">
+            <div class="th">
+                <span>接口</span><span>被攻击次数</span>
+            </div>
+
+        </div>
+        <div class="liveAttacks">
+            <table>
+                <tr class="row number">
+                    <th>Time</th>
+                    <th>IP</th>
+                    <th>Location</th>
+                    <th>Service</th>
+                </tr>
+            </table>
+        </div>
+        <div id="timeslider">
+            <div class="timeslider"><ul><li class="controls"><i class="fa fa-pause"></i></li></ul></div>
+        </div>
+    </div>
+
+</div>
+<div class="mask">
+
+</div>
+
+
+<script type="text/javascript">
+//    loadJS('/d3.v3.js');
+//    loadJS('/blackhole.js');
+    loadJS('/dshow/report/spiderkiller/index.js');
+</script>

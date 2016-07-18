@@ -1,0 +1,143 @@
+<script>
+    loadCSS('/jquery-ui.css');
+</script>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        color: #999;
+        position: relative;
+    }
+
+    #map {
+        height: 100%;
+    }
+
+    #gui-cont {
+        position: absolute;
+        z-index: 8;
+        right: 0;
+        /*top: 0;*/
+    }
+
+
+    div.timeslider {
+        position: absolute;
+        display: inline-block;
+        height: 40px;
+        width: auto !important;
+        margin-bottom: 30px;
+        padding: 0;
+        bottom: 20px;
+        left: 20px;
+        -webkit-box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        -moz-box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        box-shadow: rgba(0,0,0,0.2) 0 0 4px 2px;
+        background: white;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+        border: 1px solid #999999;
+        text-align: left;
+        z-index: 105
+    }
+
+    div.timeslider ul {
+        display: block;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        line-height: 40px;
+        list-style: none;
+        cursor: default
+    }
+
+    div.timeslider ul li {
+        display: inline-block;
+        zoom:1;*display: inline;
+        vertical-align: top;
+        height: 40px;
+        _height: 40px;
+        width: auto;
+        line-height: 40px;
+        border-right: 1px solid #E5E5E5
+    }
+
+    div.timeslider ul li.last {
+        border-right: none
+    }
+
+    div.timeslider ul li.tracks {
+        padding-right: 10px;
+        padding-left: 4px;
+    }
+
+    div.timeslider ul li.tracks span{
+        padding-left: 4px;
+    }
+
+    div.timeslider i.fa {
+        display: block;
+        width: 48px;
+        height: 40px;
+        text-align: center;
+        line-height: inherit;
+        cursor: pointer;
+    }
+
+    div.timeslider i.fa:hover {
+        color: #777777;
+    }
+
+    div.timeslider p {
+        width: 120px;
+        height: 40px;
+        margin: 0;
+        padding: 0 5px 0 0;
+        line-height: 40px;
+        font-size: 13px;
+        font-weight: bold;
+        font-family: 'Helvetica',Arial;
+        text-align: center;
+        color: #999999
+    }
+
+    div.timeslider .slider-wrapper {
+        display: inline-block;
+        zoom:1;*display: inline;
+        vertical-align: top;
+        height: 4px;
+        _height: 4px;
+        padding: 18px 15px
+    }
+
+    div.timeslider .slider {
+        width: 253px;
+        height: 4px
+    }
+
+    html body .slider .ui-slider-handle {
+        top: -5px !important;
+    }
+</style>
+<div id="maincontainer" class="">
+    <div class="maincontent">
+        <div id="map"></div>
+    </div>
+</div>
+<div id="gui-cont"></div>
+<div id="timeslider">
+    <div class="timeslider"><ul><li class="controls"><i class="fa fa-play"></i></li></ul></div>
+</div>
+
+<!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>-->
+<script>
+    loadJS('/lib/jquery-ui.js');
+    loadJS('/lib/observe.js');
+    loadJS('/dshow/report/track/canvas.js');
+</script>

@@ -1,0 +1,108 @@
+[
+	{
+		"amap":{
+			"name":"用户画像",
+			"path":"/amap",
+			"icon": "linecons-note",
+			"children":{
+			  "homepage": {
+				"name": "用户主页",
+				"icon": "glyphicon glyphicon-user",
+				"path": "/amap/user/homepage"
+			  },
+			  "user":{
+				  "name":"人地关系",
+				  "icon":"glyphicon glyphicon-signal",
+				  "path":"/amap/user",
+				  "children":{
+					"homecompany":{
+						  "name":"家和公司",
+						  "path":"/amap/user/homecompany"
+					  },
+					  "permanentsite":{
+						  "name":"活跃区域",
+						  "path":"/amap/user/permanentsite"
+					  },
+					"track":{
+					  "name":"导航轨迹",
+					  "path":"/report/track/index"
+					},
+					"fulldaytrack":{
+					  "name":"全日轨迹",
+					  "path":"/report/fulldaytrack/index"
+					},
+					"travel-preference":{
+						"name":"出行偏好",
+						"path":"/amap/user/travel-preference"
+					  }
+				  }
+			  },
+			  "userPrefer": {
+				"name": "类目偏好",
+				"icon": "fa fa-bar-chart",
+				"path": "/amap/user/userprefer"
+			  }
+			}
+		},
+		"dmap":{
+		  "name":"专题报告",
+		  "path":"/report",
+		  "icon": "fa-slideshare",
+		  "children":{
+		  	"migration":{
+				"name":"人口迁徙",
+				"path":"/report/51/migration"
+			},
+
+			"anticrawler": {
+			  "name": "反爬虫",
+			  "path": "/report/spiderkiller/index"
+			},
+			"aoiaccess": {
+			  "name": "AOI可达度",
+			  "path": "/report/aoiaccess/aoi"
+			}
+		  }
+		},
+	  "dashboard": {
+		"name": "高德人气",
+		"icon": "fa-bullseye",
+		"path": "",
+		"children":{
+		  "realtime-locate":{
+			"name":"实时定位",
+			"path":"/r/dashboard/livelocate"
+		  },
+		  "realtime-heatmap":{
+			"name":"实时热度",
+			"path":"/r/dashboard/realtime-heatmap"
+		  },
+		  "offline-heatmap":{
+			"name":"离线热度",
+			"path":"/r/dashboard/offline-heatmap"
+		  }
+
+		}
+	  },
+	  "slide":{
+		"name":"十一大屏轮播",
+		"path":"/r/dashboard/slide",
+		"icon": "fa-dashboard"
+	  },
+	  "tools": {
+		"name": "工具",
+		"icon": "fa-wrench",
+		"children": {
+		  "homecompanycompare": {
+			"name": "家和公司效果对比",
+			"path": "/tools/homecompany-compare"
+		  }
+		}
+	  },
+		"about":{
+			"name":"关于数据秀",
+			"path":"/about",
+			"icon": "fa-user-md"
+		}
+	}
+]

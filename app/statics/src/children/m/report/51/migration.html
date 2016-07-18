@@ -1,0 +1,271 @@
+<style>
+
+    #datepicker {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #back-btn {
+        margin-bottom: 0px;
+    }
+    .form-inline {
+        margin-bottom: 10px;
+    }
+
+    @keyframes rightboutOut {
+        from {
+            top: -610px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+    @-webkit-keyframes rightboutOut {
+        from {
+            top: -610px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+    @-moz-keyframes rightboutOut {
+        from {
+            top: -610px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+    .start .rightListPanel {
+        -webkit-animation-name: rightboutOut;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-delay: 2s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-fill-mode: forwards;
+
+        -moz-animation-name: rightboutOut;
+        -moz-animation-duration: .5s;
+        -moz-animation-timing-function: ease-in-out;
+        -moz-animation-delay: 2s;
+        -moz-animation-iteration-count: 1;
+        -moz-animation-direction: alternate;
+        -moz-animation-fill-mode: forwards;
+
+        -ms-animation-name: rightboutOut;
+        -ms-animation-duration: .5s;
+        -ms-animation-timing-function: ease-in-out;
+        -ms-animation-delay: 2s;
+        -ms-animation-iteration-count: 1;
+        -ms-animation-direction: alternate;
+        -ms-animation-fill-mode: forwards;
+
+        animation-name: rightboutOut;
+        animation-duration: .5s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 2s;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+    }
+    .rightListPanel {
+        top: -610px;
+    }
+
+    #comingTable, #goingTable {
+        background: url("/dshow-web/statics/images/arraw_24.png");
+        background-repeat: repeat-y;
+        background-position: center -10%;
+    }
+
+    #tt {
+        pointer-events: none;
+        color: white;
+    }
+
+    #tipContainer {
+        font-size: 16px;
+        position: absolute;
+        width: 180px;
+        z-index: 100;
+        background-repeat: no-repeat;
+        text-align: left;
+        line-height: 20px;
+    }
+
+    #tipLocation {
+        font-weight: normal;
+        font-family: Georgia;
+        font-style: Italic;
+        color: white;
+        margin: 0px;
+        padding: 10px 10px;
+        background: #333;
+        font-size: 14px;
+    }
+
+    #tipCount {
+        font-weight: bold;
+        font-size: 32px;
+        letter-spacing: -1px;
+        margin: 0px;
+        padding: 0px 10px 10px 10px;
+        color: #333;
+    }
+
+    #tipKey {
+        font-weight: normal;
+        font-size: 10px;
+        color: #333;
+        margin: 0px;
+        padding: 5px 0px 5px 10px;
+        background: rgba(218, 218, 218, 0.8);
+    }
+
+    #tt2 {
+        pointer-events: none;
+        color: white;
+    }
+
+    #tipContainer2 {
+        font-size: 16px;
+        position: absolute;
+        width: 250px;
+        z-index: 100;
+        background-repeat: no-repeat;
+        text-align: left;
+        line-height: 20px;
+    }
+
+    #tipLocation2 {
+        font-weight: normal;
+        font-family: Georgia;
+        font-style: Italic;
+        color: white;
+        margin: 0px;
+        padding: 10px 10px;
+        background: #333;
+        font-size: 14px;
+    }
+
+    #tipCount2 {
+        font-weight: bold;
+        font-size: 32px;
+        letter-spacing: -1px;
+        margin: 0px;
+        padding: 0px 10px 10px 10px;
+        color: #333;
+    }
+
+    #tipKey2 {
+        font-weight: normal;
+        font-size: 10px;
+        color: #333;
+        margin: 0px;
+        padding: 5px 0px 5px 10px;
+        background: rgba(218, 218, 218, 0.8);
+    }
+
+    .tipClear {
+        clear: both;
+    }
+
+</style>
+<div id="maincontainer" class="">
+    <div class="maincontent">
+            <div id="map" class="col-md-8"></div>
+
+            <div class="col-md-4 pull-right rightListPanel">
+                <div class="panel panel-default">
+                    <!--<div class="panel-heading">
+                        <h3 class="panel-title">Table Styles</h3>
+
+                        <div class="panel-options">
+                            <a href="#">
+                                <i class="linecons-cog"></i>
+                            </a>
+
+                            <a href="#" data-toggle="panel">
+                                <span class="collapse-icon">–</span>
+                                <span class="expand-icon">+</span>
+                            </a>
+
+                            <a href="#" data-toggle="reload">
+                                <i class="fa-rotate-right"></i>
+                            </a>
+
+                            <a href="#" data-toggle="remove">
+                                ×
+                            </a>
+                        </div>
+                    </div>-->
+
+                    <div class="panel-body panel-border">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-inline" role="form">
+                                    <div class="select_group select_group_datepicker">
+                                        <label class="control-label">时间：</label>&nbsp;
+                                        <div id="datepicker" class="select_datepicker"></div>
+                                        <button id="back-btn" class="btn btn-white btn-icon">返回</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div id="totalMig" class="row">
+                            <div class="col-sm-6">
+                                <table id="cityBoard1" class="table table-model-2 table-hover"></table>
+                            </div>
+                            <div class="col-sm-6">
+                                <table id="cityBoard2" class="table table-model-2 table-hover"></table>
+                            </div>
+                        </div>
+                        <div id="detailMig" class="row" style="display: none;">
+                            <div class="col-sm-12">
+
+                                <ul class="nav nav-tabs nav-tabs-justified">
+                                    <li class="active">
+                                        <a href="#home-3" data-toggle="tab" style="border: none;">
+                                            <span class="visible-xs"><i class="fa-home"></i></span>
+                                            <span class="hidden-xs">迁入线路</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#profile-3" data-toggle="tab" style="border: none;">
+                                            <span class="visible-xs"><i class="fa-user"></i></span>
+                                            <span class="hidden-xs">迁出线路</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="home-3">
+                                        <div>
+                                            <table id="comingTable" class="table responsive"></table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="profile-3">
+                                        <div>
+                                            <table id="goingTable" class="table responsive"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    loadCSS('/datepicker/date-month.css');
+    loadCSS('/datepicker/date-range.css');
+//    loadJS('/d3.v3.js');
+    loadJS('/dshow/report/51/smigration.js');
+</script>

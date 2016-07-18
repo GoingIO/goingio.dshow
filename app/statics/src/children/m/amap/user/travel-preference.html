@@ -1,0 +1,255 @@
+<script>
+    loadCSS("/nv.d3.css")
+</script>
+<style>
+    .travel-title {
+        font-size: 24px !important;
+    }
+
+    .main-content {
+        display: flex;
+    }
+
+    .travel-panel {
+        flex: 1;
+    }
+
+    .travel-panel > .panel-body {
+        margin-top: 20px;
+    }
+
+    .travel-options {
+        margin-top: 20px;
+        display: flex;
+        margin-left: 20px;
+    }
+
+    .travel-options label {
+        margin-right: 20px;
+    }
+
+    .travel-mining-result {
+        /*max-height: 40px;*/
+        padding: 10px !important;
+    }
+
+    #ng-app {
+        background-color: #ffffff;
+        margin: 20px auto;
+    }
+
+    .separator {
+        height: 0px;
+        background: #eeeeee;
+        margin-bottom: 15px;
+    }
+
+    .nvd3 .nv-brush .extent {
+        fill: blue;
+        fill-opacity: 0.4 !important;
+    }
+
+    svg {
+        width: 100% !important;
+        height: 40px !important;
+    }
+
+    .travel-options .svg-container, .options-container {
+        width: 600px;
+        margin-right: 10px;
+    }
+
+    .vertical-center {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .horizontal-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-form .input-container {
+        max-width: 300px;
+    }
+
+    .search-form {
+        margin-bottom: 20px;
+    }
+
+    .panel-heading {
+        color: black;
+    }
+    .mining-result{
+        color:#40bbea;
+    }
+</style>
+
+<div id="ng-app" class="container ng-cloak" ng-controller="appCtrl">
+    <div class="panel  travel-panel"><!-- Add class "collapsed" to minimize the panel -->
+        <div class="panel-heading ">
+            <h1 class="panel-title text-center travel-title" style="width:100%;">出行偏好挖掘结果反馈</h1>
+        </div>
+        <div class="separator"></div>
+        <div class="panel-body">
+            <form class="ng-pristine ng-valid search-form" ng-submit="search()" novalidate="">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1 input-container">
+                        <div class="input-group input-group-minimal">
+                            <input type="text" class="form-control ng-pristine ng-valid ng-touched"
+                                   placeholder="查询的用户标识" ng-model="searchForm.diu">
+                            <span
+                                    class="input-group-btn">
+								<button type="submit" class="btn btn-blue" id="search"
+                                        ng-class="{'disabled':searching}">
+                                    <span ng-show="!searching">Search</span><span ng-show="searching" class="ng-hide">Search...</span>
+                                </button>
+							</span>
+                        </div>
+                        <!--<div>-->
+
+                        <!--</div>-->
+                    </div>
+                    <div class="col-md-6" style="margin-top: 7px;">
+                        <span
+                                ng-show="diuOfSearchResult">“{{diuOfSearchResult}}”的查询结果如下：</span>
+                    </div>
+                </div>
+            </form>
+            <form name="preferenceFormValidation" ng-submit="submit(preferenceFormValidation.$valid)" novalidate>
+                <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                        <div class="panel  "><!-- Add class "collapsed" to minimize the panel -->
+                            <div class="panel-heading travel-mining-result">
+                                <h3 class="panel-title">一、<span ng-show="isSelf()">您</span>平均每周乘坐非公共交通：
+                                    <span class="mining-result">{{notBusPreference.text}}
+                                    </span>
+                                </h3>
+
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="travel-options">
+                                    <div class="options-container">
+                                        <label class="radio-inline"
+                                               ng-repeat="preferenceOption in notBusPreferenceOptions">
+                                            <input type="radio" ng-model="notBusPreference.value"
+                                                   ng-checked="notBusPreference.value==preferenceOption.value"
+                                                   value="{{preferenceOption.value}}">
+                                            {{preferenceOption.text}}
+                                        </label>
+                                    </div>
+                                    <div class="vertical-center">
+                                        <span class="text-danger" ng-show="isFeedback"><span ng-show="isSelf()">您</span>反馈的结果：{{notBusPreference.feedbackValue}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                        <div class="panel  "><!-- Add class "collapsed" to minimize the panel -->
+                            <div class="panel-heading travel-mining-result">
+                                <h3 class="panel-title">二、<span ng-show="isSelf()">您</span>平均每周乘坐公共交通：
+                                    <span class="mining-result">{{busPreference.text}}</span>
+                                </h3>
+
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="travel-options">
+                                    <div class="options-container">
+                                        <label class="radio-inline"
+                                               ng-repeat="preferenceOption in busPreferenceOptions">
+                                            <input type="radio" ng-model="busPreference.value"
+                                                   ng-checked="busPreference.value==preferenceOption.value"
+                                                   value="{{preferenceOption.value}}">
+                                            {{preferenceOption.text}}
+                                        </label>
+                                    </div>
+                                    <div class="vertical-center">
+                                        <span class="text-danger" ng-show="isFeedback"><span ng-show="isSelf()">您</span>反馈的结果：{{busPreference.feedbackValue}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                        <div class="panel  "><!-- Add class "collapsed" to minimize the panel -->
+                            <div class="panel-heading travel-mining-result">
+                                <h3 class="panel-title">三、<span ng-show="isSelf()">您属于：</span>
+                                    <span class="mining-result">{{car.text}}(来自高德)</span>
+                                </h3>
+
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="travel-options">
+                                    <div class="options-container">
+                                        <label class="radio-inline" ng-repeat="carOption in carOptions">
+                                            <input type="radio" ng-model="car.value"
+                                                   ng-checked="car.value==carOption.value"
+                                                   value="{{carOption.value}}">
+                                            {{carOption.text}}
+                                        </label>
+                                    </div>
+                                    <span class="text-danger" ng-show="isFeedback"><span ng-show="isSelf()">您</span>反馈的结果：{{car.feedbackValue}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                <!--<div class="col-md-11 col-md-offset-1">-->
+                <!--<div class="panel  ">&lt;!&ndash; Add class "collapsed" to minimize the panel &ndash;&gt;-->
+                <!--<div class="panel-heading travel-mining-result">-->
+                <!--<h3 class="panel-title"><span ng-show="isSelf()">您</span>车型为：{{carType.text}}(来自阿里)-->
+                <!--</h3>-->
+
+                <!--</div>-->
+
+                <!--<div class="panel-body">-->
+                <!--<div class="travel-options" style="margin-left: 10px;">-->
+                <!--<div class="options-container">-->
+                <!--<div style="display: flex;">-->
+                <!--<div style="flex:1;">-->
+                <!--<input type="text" class="form-control" ng-model="carType.brand"-->
+                <!--placeholder="车品牌"/>-->
+                <!--</div>-->
+                <!--<div style="flex:1;">-->
+                <!--<input type="text" class="form-control" ng-model="carType.series"-->
+                <!--placeholder="车型号"/>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="vertical-center">-->
+                <!--<span class="text-danger"-->
+                <!--ng-show="isFeedback"><span ng-show="isSelf()">您</span>反馈的结果：{{carType.feedbackValue}}</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="separator"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="row" ng-show="isSelf()&&diu">
+                    <div class="horizontal-center">
+                        <button class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    loadJS('/angular.min.js')
+    loadJS('/dshow/amap/user/travel-preference.js')
+</script>

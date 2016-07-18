@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="http://www.autonavi.com/favicon.ico">
+    <title>数据秀(#DSHOW_VERSION#)</title>
+    <style>
+        .ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <!-- 全局变量定义 -->
+    <script type="text/javascript">
+        (function (window) {
+            DSHOW_CONTEXT = '#DSHOW_CONTEXT#';
+            DSHOW_VERSION = '#DSHOW_VERSION#';
+            DSHOW_THEME = '#DSHOW_THEME#';
+
+            window.loadJS = function (url, theme, version) {
+                document.write('<script src="' + DSHOW_CONTEXT + '/statics/js'
+                + (theme == undefined ? '' : '/themes/' + theme) + url
+                + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                + '"><\/script>')
+            }
+            window.loadCSS = function (url, theme, version) {
+                document.write('<link rel="stylesheet" href="' + DSHOW_CONTEXT
+                + '/statics/css'
+                + (theme == undefined ? '' : '/themes/' + theme) + url
+                + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                + '"/>');
+            }
+            window.loadIMG = function (url, attr, theme, version) {
+                var style = '';
+                if (attr != undefined) {
+                    for (var index in attr) {
+                        style += index + '="' + attr[index] + '" ';
+                    }
+                }
+                document.write('<img src="' + DSHOW_CONTEXT + '/statics/images'
+                + (theme == undefined ? '' : '/themes/' + theme) + url
+                + '?v=' + (version == undefined ? DSHOW_VERSION : version)
+                + '" ' + style + ' />');
+            }
+            window.loadLINK = function (url, text) {
+                document.write('<a href="' + DSHOW_CONTEXT + url + '">' + text
+                + '<\/a>');
+            }
+
+            Date.prototype.format = function (y) {
+                var x = this;
+                var z = {
+                    M: x.getMonth() + 1,
+                    d: x.getDate(),
+                    h: x.getHours(),
+                    m: x.getMinutes(),
+                    s: x.getSeconds()
+                };
+                y = y.replace(/(M+|d+|h+|m+|s+)/g, function (v) {
+                    return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1)))
+                            .slice(-2)
+                });
+                return y.replace(/(y+)/g, function (v) {
+                    return x.getFullYear().toString().slice(-v.length)
+                });
+            };
+        })(window);
+
+        //	require.config({
+        //		waitSeconds: 200,
+        //		baseUrl: QMX_CONTEXT + '/themes/' + QMX_THEME,
+        //		urlArgs: 'v=' + QMX_VERSION,
+        //		paths: {
+        //			"leaflet": "leaflet"
+        //		}
+        //	});
+    </script>
+    <!-- 资源加载 -->
+    <script type="text/javascript">
+        loadJS('/jquery.min.js');
+        loadJS('/themes/xenon/joinable.js')
+        loadJS('/require.min.js');
+        loadJS('/bootstrap.min.js');
+        loadJS('/dshow.js');
+
+        loadCSS('/animate.css');
+        loadCSS('/bootstrap.css');
+        loadCSS('/leaflet.css');
+        loadCSS('/toastr.css');
+        loadCSS('/' + DSHOW_THEME + '.css', DSHOW_THEME);
+    </script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        loadJS('/html5shiv.min.js');
+        loadJS('/respond.min.js');
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+
+<div class="main-content">
+    #MENULESS_TEMPLATE#
+</div>
+<script type="text/javascript">
+    document.write(
+    `<footer>©${new Date().getFullYear()} 服务平台部-数据分析组 版权所有</footer>`
+    )
+
+</script>
+</body>
+
+</html>

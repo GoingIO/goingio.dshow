@@ -1,0 +1,140 @@
+<style>
+    .list-group .list-group-item {
+        padding: 10px 20px;
+        cursor: default;
+    }
+
+    .list-group .list-group-item:hover {
+        background-color: white;
+    }
+
+    .list-group .list-group-item:not(:last-child) {
+        border-bottom: none;
+    }
+
+    g.highcharts-button > rect {
+        opacity: .5;
+    }
+
+    .form-horizontal .form-group {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .legend span.led + span.led {
+        margin-left: -4px;
+    }
+    .legend span.led {
+        display: inline-block;
+        width: 35px;
+        height: 12px;
+    }
+    .legend span.led.zero  {
+        background-color: #aaeeee;
+    }
+    .legend span.led.one  {
+        background-color: #7798bf;
+    }
+    .legend span.led.two  {
+        background-color: #55bf3b;
+    }
+    .legend span.led.three  {
+        background-color: #006fb5;
+    }
+    .legend span.led.four  {
+        background-color: #ff0066;
+    }
+</style>
+<div id="container" class="main-content">
+    <div class="row" style="display:flex">
+        <div class="col-xs-3 side">
+            <div class="panel-body">
+                <div class="col-md-12 input-group">
+                    <input type="text" class="form-control" placeholder="diu"
+                           style="display:table-cell" ref="userDiu" id="udiu"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-blue" type="button" id="reset_diu_btn">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">汽车</li>
+                    <li class="list-group-item">美食</li>
+                    <li class="list-group-item">购物</li>
+                    <li class="list-group-item">生活服务</li>
+                    <li class="list-group-item">休闲娱乐</li>
+                    <li class="list-group-item">医疗保健</li>
+                    <li class="list-group-item">酒店</li>
+                    <li class="list-group-item">景区</li>
+                    <li class="list-group-item">科教文化</li>
+                    <li class="list-group-item">交通设施</li>
+                    <li class="list-group-item">金融保险</li>
+                    <li class="list-group-item">道路附属</li>
+                    <li class="list-group-item">其他</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-6 main" style="min-width:600px;flex:3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="demo-chart">
+
+                    </div>
+                    <div class="legend pull-right">
+                        <span class="outer">弱</span>
+                        <span class="led zero"></span>
+                        <span class="led one"></span>
+                        <span class="led two"></span>
+                        <span class="led three"></span>
+                        <span class="led four"></span>
+                        <span class="outer">强</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="switch" style="display: none;">
+                    <div class="panel-head">
+                        反馈
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="feedback_form">
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="feedback_iscorrect" value="1" required> 准确
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="feedback_iscorrect" value="-1" required> 不准确
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="feedback_reason" placeholder="请留下您的意见，您的反馈对我们非常重要">
+                            </div>
+                            <button type="button" id="feedback_form_submit" class="btn btn-white">提交</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="switch2" style="display: none;">
+                    <div class="panel-head">反馈已提交</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="flex:1"></div>
+        <div class="animate to-top">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    loadCSS('/userprefer.css');
+    loadJS('/highcharts.js');
+    loadJS('/highcharts-drilldown.min.js');
+    loadJS('/dshow/amap/user/userprefer-dic.js');
+    loadJS('/dshow/amap/user/userprefer.js');
+</script>

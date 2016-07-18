@@ -1,0 +1,123 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.42857143;
+    background-color: rgb(26,39,63);
+}
+
+.main-content {
+    flex: 1;
+}
+.wrap {
+    perspective: 800px;
+}
+.home {
+    position: absolute;
+    left: 10px;
+    font-size: 36px;
+    z-index: 2;
+}
+
+
+svg {
+    display: block;
+    margin: auto;
+}
+#timebox {
+    position: absolute;
+    color: #0ff;
+    width:100%;
+    text-align: center;
+    top: 80px;
+    z-index: 1;
+}
+#graph {
+    position: relative;
+    overflow-x: hidden;
+    transition-duration: .5s;
+    transform-style: preserve-3d;
+    /*transform: rotateX(45deg);*/
+}
+
+g#states path{
+    stroke: #245c97;
+    stroke-width: 1px;
+    fill: #182c50;
+}
+
+rect.background {
+    fill: none;
+    pointer-events: all;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: none;
+}
+body > footer {
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #455779;
+    padding-right: 10px;
+    background-color: rgba(107, 107, 107, 0);
+}
+
+.tips {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-right: 10px;
+    font-style: italic;
+    color: #6b6b6b;
+}
+
+.pv-count {
+    position: absolute;
+    width: 100%;
+    top: 120px;
+    text-align: center;
+    z-index: 1;
+}
+
+.edge {
+    position: absolute;
+}
+
+.edge.left {
+    left: 0;
+    right: auto;
+    width: 50px;
+    height: 100%;
+    background: -webkit-linear-gradient(left, rgb(26,39,63), rgba(26,39,63, 0) 100%);
+}
+
+.edge.top {
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: -webkit-linear-gradient(top, rgb(26,39,63), rgba(26,39,63, 0) 100%);
+}
+
+.edge.right {
+    right: 0;
+    left: auto;
+    height: 100%;
+    width: 50px;
+    background: -webkit-linear-gradient(right, rgb(26,39,63), rgba(26,39,63, 0) 100%);
+}
+

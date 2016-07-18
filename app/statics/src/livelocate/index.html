@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Live Locate</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="odometer-theme-digital.css"/>
+</head>
+<body>
+<div class="main-content">
+    <div class="wrap">
+
+        <div id="timebox" class="text-center" style="">实时定位  <span id="time"></span></div>
+        <div id="graph">
+            <div class="edge left"></div>
+            <div class="edge top"></div>
+            <div class="edge right"></div>
+        </div>
+    </div>
+</div>
+<footer>&copy;高德启明星</footer>
+<script src="jquery.min.js"></script>
+<script src="d3.v3.js"></script>
+<script src="odometer.js"></script>
+<script src="socket.io.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

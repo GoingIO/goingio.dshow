@@ -1,0 +1,261 @@
+<base href="/">
+<style>
+    .amap-toolbar {
+        z-index: 0 !important;
+    }
+</style>
+<script>
+    loadCSS("/public.css")
+</script>
+<div id="ng-app" ng-controller="appCtrl" class="ng-cloak">
+    <div class="col-sm-3 info-panel animated fadeInLeft">
+        <div class="left-panel panel panel-default">
+            <div class="panel-body">
+                <div class="user-profile">
+                    <form novalidate ng-submit="search()">
+                        <div class="input-group input-group-minimal">
+                            <span class="input-group-addon pointer" ng-click="changeSearchType()">
+                                <i class="" ng-show="type===searchType" ng-repeat="searchType in searchTypeList">{{searchType}}</i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="查询的用户标识或经纬度"
+                                   ng-model="searchForm.userIdOrLngLat" id="userID"> <span
+                                class="input-group-btn">
+								<button type="submit" class="btn btn-blue" id="search"
+                                        ng-class="{'disabled':searching}">
+                                    <span ng-show="!searching">Search</span><span
+                                        ng-show="searching">Search...</span>
+                                </button>
+							</span>
+                        </div>
+                    </form>
+                    <div style="margin-top: 15px;">注：
+                        用户标识为空时，获取的是当前登录用户的位置信息，纬度和经度请以英文逗号隔开，例如(39.878842,116.475061)
+                    </div>
+                    <hr>
+                    <div class="xe-widget xe-conversations">
+                        <div class="xe-body home_body" ng-show="showHomeDig">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="xe-comment-entry">
+                                        <a href="#" class="xe-user-img"
+                                           ng-click="openInfoWindow(homeDig.infoWindow,homeDig.marker)"
+                                           ng-class="{'not-allowed':!homeDig.infoWindow}">
+                                            <div class="home-icon"></div>
+                                        </a>
+
+                                        <div class="xe-comment home_panel">
+                                            <a href="#" class="xe-user-name href"
+                                               ng-class="{'not-allowed':!homeDig.infoWindow}"
+                                               ng-click="openInfoWindow(homeDig.infoWindow,homeDig.marker)">
+                                                <h4>家</h4>
+                                            </a>
+                                            <!--</a> <span class="badge badge-white">Y</span>-->
+                                            <span>{{homeDig.y}},{{homeDig.x}}</span>
+                                            <!--<span class="badge badge-white">X</span>-->
+                                            <p class="description">{{homeDig.regeocode.formattedAddress}}</p>
+
+                                            <div class=" blockquote blockquote-info"
+                                                 ng-show="showHomeSubscribe">
+                                                <a href="#" class="xe-user-name"
+                                                   ng-click="openInfoWindow(homeSubscribe.infoWindow,homeSubscribe.marker)">
+                                                    <h5>家的订阅位置(红色标记)</h5>
+                                                </a>
+                                                <span>{{homeSubscribe.y}},{{homeSubscribe.x}}</span>
+
+                                                <div class="d-instance" ng-show="homeSubscribe.distance">
+                                                    与预测结果相差<span
+                                                        class="badge badge-blue">{{homeSubscribe.distance}}</span>米
+                                                </div>
+                                            </div>
+                                            <div class=" blockquote blockquote-info"
+                                                 ng-show="showHomeFeedback&&!homeFeedback.right">
+                                                <a href="#" class="xe-user-name"
+                                                   ng-click="openInfoWindow(homeFeedback.infoWindow,homeFeedback.marker)">
+                                                    <h5>家的反馈位置(红色标记)</h5>
+                                                </a>
+                                                <span>{{homeFeedback.y}},{{homeFeedback.x}}</span>
+
+                                                <div class="d-instance" ng-show="homeFeedback.distance">
+                                                    与预测结果相差<span
+                                                        class="badge badge-blue">{{homeFeedback.distance}}</span>米
+                                                </div>
+                                            </div>
+                                            <div class=" blockquote blockquote-info"
+                                                 ng-show="showHomeFeedback&&homeFeedback.right">
+                                                <a class="xe-user-name">
+                                                    <h5>家的反馈:正确</h5>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="xe-body company_body" ng-show="showCompanyDig">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="xe-comment-entry">
+                                        <a href="#" class="xe-user-img"
+                                           ng-class="{'not-allowed':!companyDig.infoWindow}"
+                                           ng-click="openInfoWindow(companyDig.infoWindow,companyDig.marker)">
+                                            <div class="company-icon"></div>
+                                        </a>
+
+                                        <div class="xe-comment company_panel">
+                                            <a href="#" class="xe-user-name href"
+                                               ng-class="{'not-allowed':!companyDig.infoWindow}"
+                                               ng-click="openInfoWindow(companyDig.infoWindow,companyDig.marker)">
+                                                <h4>公司</h4>
+                                            </a>
+                                            <span>{{companyDig.y}},{{companyDig.x}}</span>
+
+                                            <p class="description">{{companyDig.regeocode.formattedAddress}}</p>
+
+                                            <div class="d-company blockquote blockquote-info"
+                                                 ng-show="showCompanySubscribe">
+                                                <a href="#" class="xe-user-name"
+                                                   ng-click="openInfoWindow(companySubscribe.infoWindow,companySubscribe.marker)">
+                                                    <h5>公司订阅位置(红色标记)</h5>
+                                                </a>
+                                                <span>{{companySubscribe.y}},{{companySubscribe.x}}</span>
+
+                                                <div class="d-instance" ng-show="companySubscribe.distance">
+                                                    与预测结果相差<span
+                                                        class="badge badge-blue">{{companySubscribe.distance}}</span>米
+                                                </div>
+                                            </div>
+                                            <div class=" blockquote blockquote-info"
+                                                 ng-show="showCompanyFeedback&&!companyFeedback.right">
+                                                <a href="#" class="xe-user-name"
+                                                   ng-click="openInfoWindow(companyFeedback.infoWindow,companyFeedback.marker)">
+                                                    <h5>公司反馈位置(红色标记)</h5>
+                                                </a>
+                                                <span>{{companyFeedback.y}},{{companyFeedback.x}}</span>
+
+                                                <div class="d-instance" ng-show="companyFeedback.distance">
+                                                    与预测结果相差<span
+                                                        class="badge badge-blue">{{companyFeedback.distance}}</span>米
+                                                </div>
+                                            </div>
+                                            <div class=" blockquote blockquote-info"
+                                                 ng-show="showCompanyFeedback&&companyFeedback.right">
+                                                <a class="xe-user-name">
+                                                    <h5>公司反馈:正确</h5>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="xe-body permanent_body" ng-show="showPermanentDig">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="xe-comment-entry">
+                                        <a href="#" class="xe-user-img"
+                                           ng-click="openInfoWindow(permanentDig.infoWindow,permanentDig.marker)">
+                                            <div class="permanent-icon"></div>
+                                        </a>
+
+                                        <div class="xe-comment permanent_panel">
+                                            <a href="#"
+                                               ng-click="openInfoWindow(permanentDig.infoWindow,permanentDig.marker)">
+                                                <h4>常住地</h4>
+                                            </a>
+                                            <span>{{permanentDig.y}},{{permanentDig.x}}</span>
+
+                                            <p class="description">{{permanentDig.regeocode.formattedAddress}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="user-operation" ng-show="showUserOperation">
+                        <div class="panel-title">用户反馈</div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">家</label>
+                                        <label class="radio-inline"> <input type="radio"
+                                                                            name="home_check" value="1"> 准确
+                                        </label> <label class="radio-inline"> <input type="radio"
+                                                                                     name="home_check" value="-1"> 不准确
+                                    </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">公司</label>
+                                        <label class="radio-inline"> <input type="radio"
+                                                                            name="company_check" value="1"> 准确
+                                        </label> <label class="radio-inline"> <input type="radio"
+                                                                                     name="company_check" value="-1">
+                                        不准确
+                                    </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group animated fadeInDown" id="home_check"
+                                         style="display: none;">
+                                        <label class="col-sm-3 control-label">家</label>
+
+                                        <div class="col-sm-9">
+                                            <p>
+                                                <input type="text" class="form-control" size="25"
+                                                       style="margin-top: 2px;" placeholder="拖动标记点" id="home_y">
+                                                <input type="text" class="form-control" size="25"
+                                                       placeholder="拖动标记点" id="home_x">
+                                                <button
+                                                        class="btn btn-primary btn-icon btn-icon-standalone btn-sm"
+                                                        id="home_specify" style="margin-top: 5px;">
+                                                    <i class="linecons-location"></i> <span>调整家的位置</span>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group animated fadeInDown" id="company_check"
+                                         style="display: none;">
+                                        <label class="col-sm-3 control-label">公司</label>
+
+                                        <div class="col-sm-9">
+                                            <p>
+                                                <input type="text" class="form-control" size="25"
+                                                       style="margin-top: 2px;" placeholder="拖动标记点" id="company_y">
+                                                <input type="text" class="form-control" size="25"
+                                                       placeholder="拖动标记点" id="company_x">
+                                                <button
+                                                        class="btn btn-primary btn-icon btn-icon-standalone btn-sm"
+                                                        id="company_specify" style="margin-top: 5px;">
+                                                    <i class="linecons-location"></i> <span>调整公司位置</span>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-blue btn-sm" id="submit">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <x-toggle-left></x-toggle-left>
+    </div>
+    <div id="mapContainer" class="map-container"></div>
+    <div id="tip" ng-click="toggleRuler()">
+        <input type="button" value="{{ruleTip}}"/>
+    </div>
+</div>
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=a0ca0ef317a808948f4a732403d55404"></script>
+<script type="text/javascript">
+    loadJS('/angular.min.js')
+    loadJS('/dshow/amap/user/homecompany.js')
+</script>
